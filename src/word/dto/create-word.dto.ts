@@ -16,14 +16,18 @@ export class CreateWordDto {
   @IsNotEmpty()
   meaning: string;
 
+
   @IsString()
   @IsNotEmpty()
   grammaticalClass: string;
 
-  @IsArray()
-  @IsOptional()
-  @IsUUID('4', { each: true }) // IDs de phonetic
-  phoneticIds?: string[];
+  @IsString()
+  @IsNotEmpty()
+  category: string;
+
+  @IsString()
+  @IsNotEmpty()
+  ipa: string;
 
   @IsArray()
   @IsOptional()
@@ -32,18 +36,16 @@ export class CreateWordDto {
 
   @IsString()
   @IsNotEmpty()
-  language: string;
+  explanation_language: string;
+
 
   @IsString()
-  @IsOptional()
-  context?: string;
-
-  @IsUUID('4')
   @IsNotEmpty()
-  dictionaryId: string;
+  sign_language: string;
+
 
   @IsArray()
-  @IsOptional()
-  @IsUUID('4', { each: true }) // IDs de sinónimos
-  synonymIds?: string[];
+  @IsNotEmpty()
+  @IsString({ each: true }) 
+  syllables: string[];
 }

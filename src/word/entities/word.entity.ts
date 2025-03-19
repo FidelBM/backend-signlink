@@ -25,6 +25,9 @@ export class Word {
   @Column('text')
   grammaticalClass: string;
 
+  @Column('text')
+  category: string;
+
   @OneToMany(() => Phonetic, (phonetic) => phonetic.word, {
     onDelete: 'CASCADE',
     eager: true,
@@ -46,10 +49,21 @@ export class Word {
   media: Media[];
 
   @Column('text')
-  language: string;
+  explanation_language: string;
 
   @Column('text')
-  context: string;
+  sign_language: string;
+
+  @Column('text', { array: true })
+  syllables: string[];
+
+  @Column('text')
+  ipa: string;
+
+  @Column('text')
+  exemplo: string;
+
+  
 
   @ManyToOne(() => Dictionary, (dictionary) => dictionary.words, {
     onDelete: 'CASCADE',
